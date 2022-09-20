@@ -16,6 +16,7 @@ export const indexRequest = async (
   const url = getUrl(apiConf.baseUrl || '', `/${resourceType}`)
   const headers = new Headers()
   headers.append('Content-Type', 'application/vnd.api+json')
+  headers.append('Accept', 'application/vnd.api+json')
   const conf = { method: 'GET', headers }
   Object.keys(queryParams).forEach((key) =>
     url.searchParams.append(key, queryParams[key])
@@ -37,6 +38,7 @@ export const getRequest = async (
   const url = getUrl(apiConf.baseUrl || '', `/${resourceType}/${id}`)
   const headers = new Headers()
   headers.append('Content-Type', 'application/vnd.api+json')
+  headers.append('Accept', 'application/vnd.api+json')
   const conf = { method: 'GET', headers }
   Object.keys(queryParams).forEach((key) =>
     url.searchParams.append(key, queryParams[key])
@@ -57,6 +59,7 @@ export const createRequest = async (
   const url = getUrl(apiConf.baseUrl || '', `/${resourceType}`)
   const headers = new Headers()
   headers.append('Content-Type', 'application/vnd.api+json')
+  headers.append('Accept', 'application/vnd.api+json')
   const conf = { method: 'POST', headers, body: JSON.stringify(body) }
   const response = await fetch(url.href, conf)
   if (!response.ok) {
@@ -77,6 +80,7 @@ export const updateRequest = async (
   const url = getUrl(apiConf.baseUrl || '', `/${resourceType}/${id}`)
   const headers = new Headers()
   headers.append('Content-Type', 'application/vnd.api+json')
+  headers.append('Accept', 'application/vnd.api+json')
   const conf = { method: 'PATCH', headers, body: JSON.stringify(body) }
   const response = await fetch(url.href, conf)
   if (!response.ok) {
@@ -93,6 +97,7 @@ export const deleteRequest = async (resourceType: string, id: string) => {
   const url = getUrl(apiConf.baseUrl || '', `/${resourceType}/${id}`)
   const headers = new Headers()
   headers.append('Content-Type', 'application/vnd.api+json')
+  headers.append('Accept', 'application/vnd.api+json')
   const conf = { method: 'DELETE', headers }
   const response = await fetch(url.href, conf)
   if (!response.ok) {
